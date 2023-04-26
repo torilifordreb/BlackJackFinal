@@ -18,7 +18,7 @@ namespace BlackJackFinal
 
 
             //new array to hold DeckInUse of cards
-            List<Card> deckOfCards = new List<Card>(5);
+            List<Card> deckOfCards = new List<Card>(52);
             //counter integer
             int m = 0;
 
@@ -104,14 +104,16 @@ namespace BlackJackFinal
                     case 2:
                         //concat deckOfCards to itself for 2 decks
                         deckOfCards.AddRange(deckOfCards);
+                        //allDecks = deckOfCards;
                         break;
                     case 3:
                         //concat deckOfCards to itself twice for 3 decks
                         deckOfCards.AddRange(deckOfCards);
                         deckOfCards.AddRange(deckOfCards);
+                        //allDecks = deckOfCards;
                         break;
                     default:
-                        //nothing changes, the deckOfCards is already established
+                        //allDecks = deckOfCards;
                         break;
                 }//end multi-deck section
 
@@ -197,7 +199,7 @@ namespace BlackJackFinal
                             else if (hitStandChoice == "s" || hitStandChoice == "S")
                             {
                                 //while computer total score is less than 18, continue to draw
-                                while (compPlayer.GetCurrentScore() + compPlayer.GetFaceDownScore() < 18)
+                                while (compPlayer.GetCurrentScore() + compPlayer.GetFaceDownScore() < 19)
                                 { 
                                     Console.WriteLine(deckInUse.computerDealCard() + "\t|\t\t\t\t" + playerOne.GetName() + "'s Score: " + playerOne.GetCurrentScore() +
                                         "\tComp.'s Score: " + compPlayer.GetCurrentScore());
@@ -212,6 +214,16 @@ namespace BlackJackFinal
                                     else if (deckInUse.ChkComputerBust() == true)
                                     {
                                         i++;  //leave the loop
+                                    }
+
+                                    //if the computers score isnt a blackjack but is higher than playerone
+                                    if (compPlayer.GetCurrentScore() + compPlayer.GetFaceDownScore() > playerOne.GetCurrentScore() && compPlayer.GetCurrentScore() + compPlayer.GetFaceDownScore() < 21) 
+                                    {
+                                        //then computer wins
+                                        Console.WriteLine("\n\n***** Computer Wins! *****\t\t\t\tComp. Face Down Card: " + deckInUse.GetFaceDownCard());
+                                        Console.WriteLine("\t\t\t\t\t\t\t" + playerOne.GetName() + "'s Score: " + playerOne.GetCurrentScore() + "\tComp.'s Score: " + compPlayer.GetCurrentScore());
+                                        //add bet and computer's equal bet to the computer's bank
+                                        compPlayer.SetInTheBank(compPlayer.GetInTheBank() + (playerOne.GetPlayerBet() * 2));
                                     }
                                 }
                             }

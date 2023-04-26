@@ -183,6 +183,22 @@ namespace BlackJackFinal
             return checkBust;
         }
 
+        public bool ChkForTieGame()
+        {
+            bool checkTie = ComputerPlayer.GetCurrentScore() + ComputerPlayer.GetFaceDownScore() == PlayerOne.GetCurrentScore();
+
+            if (checkTie)
+            {
+                Console.WriteLine("\n\nComputer and " + PlayerOne.GetName() + " tie this round!\t\t\tComp. Face Down Card: " + GetFaceDownCard());
+                Console.WriteLine("\t\t\t\t\t\t\t" + PlayerOne.GetName() + "'s Score: " + PlayerOne.GetCurrentScore() + "\tComp.'s Score: " + ComputerPlayer.GetCurrentScore());
+                //add orginial bet back to player and computers bank
+                PlayerOne.SetInTheBank(PlayerOne.GetPlayerBet() + PlayerOne.GetInTheBank());
+                ComputerPlayer.SetInTheBank(ComputerPlayer.GetInTheBank() + PlayerOne.GetPlayerBet());
+            }
+
+            return checkTie;
+        }
+
         public string GetFaceDownCard()
         {
             ComputerPlayer.SetCurrentScore(ComputerPlayer.GetCurrentScore() + ComputerPlayer.GetFaceDownScore());

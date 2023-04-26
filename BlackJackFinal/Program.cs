@@ -147,10 +147,14 @@ namespace BlackJackFinal
                     //check for blackjack or bust
                     if (deckInUse.ChkPlayerBlackJack() == true)
                     {
+                        if (deckInUse.ChkForTieGame() == true)
+                            i++;
                         i++;  //leave the loop
                     }
                     if (deckInUse.ChkComputerBlackJack() == true)
                     {
+                        if (deckInUse.ChkForTieGame() == true)
+                            i++;
                         i++;  //leave the loop
                     }
                     if (deckInUse.ChkPlayerBust() == true)
@@ -181,6 +185,8 @@ namespace BlackJackFinal
                                 //check for bust/blackjack after each card
                                 if (deckInUse.ChkPlayerBlackJack() == true)
                                 {
+                                    if (deckInUse.ChkForTieGame() == true)
+                                        i++;
                                     i++;  //leave the loop
                                 }
                                 if (deckInUse.ChkPlayerBust() == true)
@@ -199,6 +205,8 @@ namespace BlackJackFinal
                                     //check computer scores
                                     if (deckInUse.ChkComputerBlackJack() == true)
                                     {
+                                        if (deckInUse.ChkForTieGame() == true)
+                                            i++;
                                         i++;  //leave the loop
                                     }
                                     else if (deckInUse.ChkComputerBust() == true)

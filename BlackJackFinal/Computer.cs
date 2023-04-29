@@ -8,7 +8,7 @@ namespace BlackJackFinal
 {
     public class Computer
     {
-        private double inTheBank = 1_000_000.00;     //dealer starts with one million
+        private double InTheBank = 1_000_000.00;     //dealer starts with one million
         private int CurrentScore = 0;
         private int FaceDownScore = 0;
 
@@ -20,12 +20,12 @@ namespace BlackJackFinal
 
         public double GetInTheBank()
         {
-            return inTheBank;
+            return InTheBank;
         }
 
         public void SetInTheBank(double inTheBank)
         {
-            this.inTheBank = inTheBank;
+            this.InTheBank = inTheBank;
         }
 
         public int GetCurrentScore()

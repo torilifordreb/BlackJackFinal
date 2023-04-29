@@ -13,6 +13,7 @@ namespace BlackJackFinal
 		private int CurrentScore;
 		private double PlayerBet = 0.0;
 
+		//default constructor
 		public Player()
 		{
 			SetName("");
@@ -20,7 +21,7 @@ namespace BlackJackFinal
 			SetCurrentScore(0);
 			SetPlayerBet(0.0);
 		}
-
+		//overload constructor
 		public Player(string name, double inTheBank, double PlayerBet, int currentScore = 0)
 		{
 			SetName(name);

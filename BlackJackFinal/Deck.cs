@@ -210,7 +210,7 @@ namespace BlackJackFinal
             this.FaceDownCard = FaceDownCard;
         }
 
-        public void printDeck()
+        public void PrintDeck()
         {
             foreach (Card c in DeckInUse)
             {
